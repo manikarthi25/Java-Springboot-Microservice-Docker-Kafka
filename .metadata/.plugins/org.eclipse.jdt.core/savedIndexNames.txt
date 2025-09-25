@@ -157,7 +157,6 @@ INDEX VERSION 1.132+C:\Mani\Java-Springboot-Microservice-Docker-Kafka\.metadata\
 223113540.index
 1194584636.index
 4155581047.index
-3122358467.index
 3186342054.index
 1398703817.index
 175032368.index
