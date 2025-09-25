@@ -1,8 +1,0 @@
-package com.service.kafka.model;
-
-public class PrototypeClass {
-	
-	String name;
-	String address;
-	
-}

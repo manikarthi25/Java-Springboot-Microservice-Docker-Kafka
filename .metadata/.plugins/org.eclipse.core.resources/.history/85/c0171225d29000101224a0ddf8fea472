@@ -1,9 +1,0 @@
-package com.service.kafka.model;
-
-public class PurchaseOrder {
-
-	private String poNumber;
-	private String dcNumber;
-	private String poStatus;
-
-}

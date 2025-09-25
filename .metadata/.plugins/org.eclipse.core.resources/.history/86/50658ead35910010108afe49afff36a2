@@ -1,5 +1,0 @@
-package com.service.kafka.service;
-
-public interface PurchaseOrderService {
-
-}

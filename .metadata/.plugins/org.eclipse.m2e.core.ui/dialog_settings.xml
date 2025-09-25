@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Mani\Java-Springboot-Microservice-Docker-Kafka\Mani-Mart-Eureka-Service"/>
 			<item value="C:\Mani\Springboot-Microservice-Docker\kafka"/>
 			<item value="C:\Mani\Springboot-Microservice-Docker\Springboot-Kafka-Java17"/>
 			<item value="C:\Mani\Springboot-Microservice-Docker\kafka-producer-consumer"/>
