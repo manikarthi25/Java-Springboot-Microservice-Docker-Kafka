@@ -1,0 +1,26 @@
+package com.service.kafka.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+@Table(name = "purchase_order")
+public class PurchaseOrderEntity {
+	
+	@Id
+	private Integer poNumber;
+	private String dcNumber;
+	private String poStatus;
+
+}

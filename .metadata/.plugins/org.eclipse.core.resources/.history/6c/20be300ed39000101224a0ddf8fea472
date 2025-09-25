@@ -1,0 +1,37 @@
+package com.service.kafka.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "purchase_order")
+public class PurchaseOrderEntity {
+	
+	private String poNumber;
+	private String dcNumber;
+	private String poStatus;
+
+	public String getPoNumber() {
+		return poNumber;
+	}
+
+	public void setPoNumber(String poNumber) {
+		this.poNumber = poNumber;
+	}
+
+	public String getDcNumber() {
+		return dcNumber;
+	}
+
+	public void setDcNumber(String dcNumber) {
+		this.dcNumber = dcNumber;
+	}
+
+	public String getPoStatus() {
+		return poStatus;
+	}
+
+	public void setPoStatus(String poStatus) {
+		this.poStatus = poStatus;
+	}
+}

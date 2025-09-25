@@ -1,0 +1,10 @@
+package com.service.kafka.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.service.kafka.entity.PurchaseOrderEntity;
+
+@Jpa
+public class PurchaseOrderRepo  extends JpaRepository<PurchaseOrderEntity, Integer> {
+
+}

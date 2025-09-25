@@ -1,0 +1,49 @@
+package com.service.kafka.controller;
+
+import java.util.concurrent.ExecutionException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.service.kafka.config.KafkaConfig;
+import com.service.kafka.model.PurchaseOrder;
+
+@RestController
+@RequestMapping("/po")
+public class PurchaseOrderController {
+	
+	@Autowired
+	private KafkaTemplate<String, Object> kafkaTemplate;
+	
+	@Autowired
+	private KafkaConfig kafkaConfig;
+	
+	ObjectMapper objectMapper = new ObjectMapper();
+
+	@GetMapping
+	public ResponseEntity<String> appStatus() {
+		return new ResponseEntity<String>("Spring Boot is up and running", HttpStatus.OK);
+	}
+
+	@PostMapping("/publish")
+	public ResponseEntity<PurchaseOrder> publishPO(@RequestBody PurchaseOrder purchaseOrder) {
+		try {
+			kafkaTemplate.send(kafkaConfig.getPoTopicName(), "welcome").get();
+		} catch (InterruptedException | ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return new ResponseEntity<PurchaseOrder>(purchaseOrder, HttpStatus.OK);
+
+	}
+
+}

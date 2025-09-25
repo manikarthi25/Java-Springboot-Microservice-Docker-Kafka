@@ -1,0 +1,47 @@
+Client - Server 
+===============
+Client -> send request to server (Tomcat)
+server - response to client
+
+Tomcat is a servlet-container
+
+We have muliple controller within servlet-container like HomeController, AddAccountController, BalancleController etc
+Each controlller convert into servlet-container
+
+Front Controller is nothing but Dispatcher Servlet
+
+Filter chain - We have multiple pre-defined filter if User want to create filter, we can create it.
+
+Flow
+Client -> Send request to Servlet Container
+
+WIthin Serlet Container flow 
+Filter Chain(Multiple Filter like F1->F2>F3->Dispatcher Servlet) - front cotroller (Dispatcher Servlet) - controller like HomeController or someother controller based on request
+
+Before request go to Dispatcer servlet - Tomcat checking whether any FilterChain is there or not. If it is there, the request go to FilterChain before reach to Dispatcer servlet
+
+Client -> Request -> FilterChain(F1->F2->F3->F4) -> F4 to Dispatcher Servlet(Frint Controller) -> User COntroller
+
+User COntroller -> Response -> Dispatcher Servlet(Frint Controller) -> F4 -> F3 -> F2 -> F1(FilterChain)->Client
+
+Spring Security - CSRF - Cross-Site Request Forgery (CSRF)
+==========================================================
+Inpect the element at time of logout (localhost:8080/logout), get to see csrf token. New CSRF token whenever new request is coming
+
+Enable Spring Security - Just add spring security dependecny in POM.xml
+
+By default GET request allow, need to pass security (user and password) and no need pass CSRF token
+
+But If we use PUT, POST and DELETE, Need to send username and password, should send CSRF token as well.
+
+By default CSRF token generate for every incoming request, it is hidden only, we can see browser dev tools(inspect)
+
+Header (Key and Value pair)
+Key : X-CSRF-TOKEN
+Value : 
+
+Http Request - Stateless
+=========================
+HTTP (Hypertext Transfer Protocol) is a stateless protocol, 
+meaning it does not retain any information about previous interactions between the client and server.
+Each request from a client to a server is treated as an independent transaction, unrelated to any previous request.

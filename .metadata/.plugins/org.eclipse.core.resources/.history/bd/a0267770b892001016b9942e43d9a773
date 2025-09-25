@@ -1,0 +1,9 @@
+package com.service.kafka.model;
+
+public class MainClass {
+	
+	public static void main() {
+		
+	}
+
+}

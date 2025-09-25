@@ -1,0 +1,26 @@
+package com.service.kafka.service.impl;
+
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.service.kafka.constant.ErrorConstant;
+import com.service.kafka.constant.MessageConstant;
+import com.service.kafka.exception.AppException;
+import com.service.kafka.model.PurchaseOrder;
+
+@Service
+public class PurchaseOrderProducer {
+	
+	public void listener(@Payload String message) throws AppException {
+
+		try {
+			PurchaseOrder purchaseOrder = objectMapper.readValue(message, PurchaseOrder.class);
+			purchaseOrderService.savePO(purchaseOrder);
+			//LOGGER.info("Data Received: {}", purchaseOrder.getPoNumber());
+		} catch (JsonProcessingException e) {
+			throw new AppException(ErrorConstant.APP_ERROR_03, MessageConstant.PAYLOAD_HANDLING_ERROR);
+		}
+	}
+
+}

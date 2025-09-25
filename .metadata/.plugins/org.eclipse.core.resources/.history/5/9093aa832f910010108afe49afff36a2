@@ -1,0 +1,47 @@
+package com.service.kafka.model;
+
+import com.service.kafka.config.KafkaConfig;
+import com.service.kafka.config.KafkaProducerConfig;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class PurchaseOrder {
+
+	private Integer poNumber;
+	private String dcNumber;
+	private String poStatus;
+
+	public Integer getPoNumber() {
+		return poNumber;
+	}
+
+	public void setPoNumber(Integer poNumber) {
+		this.poNumber = poNumber;
+	}
+
+	public String getDcNumber() {
+		return dcNumber;
+	}
+
+	public void setDcNumber(String dcNumber) {
+		this.dcNumber = dcNumber;
+	}
+
+	public String getPoStatus() {
+		return poStatus;
+	}
+
+	public void setPoStatus(String poStatus) {
+		this.poStatus = poStatus;
+	}
+
+}

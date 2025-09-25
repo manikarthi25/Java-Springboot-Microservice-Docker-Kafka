@@ -1,0 +1,23 @@
+package com.service.kafka.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import com.service.kafka.constant.ErrorConstant;
+
+@ControllerAdvice
+public class AppExceptionHandler {
+
+	@ExceptionHandler(AppException.class)
+	public ResponseEntity<AppException> handleException(final AppException ex) {
+		return new ResponseEntity<AppException>(ex, HttpStatus.CONFLICT);
+	}
+
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<AppException> handleException(final Exception ex) {
+		AppException app = new AppException(ErrorConstant.APP_ERROR_02, ex.getLocalizedMessage());
+		return new ResponseEntity<AppException>(app, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+}

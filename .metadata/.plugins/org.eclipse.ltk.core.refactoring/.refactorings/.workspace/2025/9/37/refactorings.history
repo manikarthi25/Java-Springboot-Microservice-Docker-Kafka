@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;Springboot-Kafka-Java17&apos;" deleteContents="false" description="Delete resource &apos;Springboot-Kafka-Java17&apos;" element1="/Springboot-Kafka-Java17" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1757788648020"/>&#x0A;<refactoring comment="Rename resource &apos;kafka&apos; to &apos;kafka-service&apos;" description="Rename resource &apos;kafka&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/kafka" name="kafka-service" stamp="1757789007427" updateReferences="true"/>
+</session>

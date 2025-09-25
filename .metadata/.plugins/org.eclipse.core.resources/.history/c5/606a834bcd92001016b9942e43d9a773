@@ -1,0 +1,17 @@
+package com.service.kafka.model;
+
+public class Test {
+	
+	String name;
+	String address;
+	
+	private static Test test = new Test();
+	
+	Test() {}
+	
+	public static Test getInstance() {
+		return test;
+	}
+		
+
+}

@@ -1,0 +1,7 @@
+package com.service.kafka.service.impl;
+
+import com.service.kafka.service.PurchaseOrderService;
+
+public class PurchaseOrderServiceImpl implements PurchaseOrderService {
+
+}

@@ -1,0 +1,64 @@
+package com.demo.kafka.controller;
+
+import java.util.concurrent.ExecutionException;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.demo.kafka.config.KafkaConfig;
+import com.demo.kafka.constant.ErrorConstant;
+import com.demo.kafka.constant.MessageConstant;
+import com.demo.kafka.exception.AppException;
+import com.demo.kafka.model.PO;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@RestController
+@RequestMapping("/po")
+public class POController {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(POController.class);
+
+	@Autowired
+	private KafkaTemplate<String, Object> kafkaTemplate;
+
+	@Autowired
+	private XmlMapper xmlMapper;
+
+	@Autowired
+	private KafkaConfig kafkaConfig;
+
+	@GetMapping
+	public String appStatus() {
+		return "Spring Boot is up and running";
+	}
+
+	@PostMapping(value = "/publish", consumes = { MediaType.APPLICATION_JSON_VALUE,
+			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
+					MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<String> publishPO(@Valid @RequestBody PO po) throws AppException {
+		try {
+
+			String message = xmlMapper.writeValueAsString(po);
+			LOGGER.info("Input Payload Received:{}", message);
+			kafkaTemplate.send(kafkaConfig.getPoTopicName(), message).get();
+			return new ResponseEntity<String>("Message has been published successfully", HttpStatus.OK);
+		} catch (InterruptedException | ExecutionException | JsonProcessingException e) {
+			throw new AppException(ErrorConstant.APP_ERROR_01, MessageConstant.MSG_PUBLISH_FAILED);
+		}
+
+	}
+}

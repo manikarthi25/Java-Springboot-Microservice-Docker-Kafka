@@ -1,0 +1,25 @@
+package com.service.kafka.service.impl;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.demo.kafka.entity.PurchaseOrderEO;
+import com.service.kafka.entity.PurchaseOrderEntity;
+import com.service.kafka.model.PurchaseOrder;
+import com.service.kafka.repo.PurchaseOrderRepo;
+import com.service.kafka.service.PurchaseOrderService;
+
+public class PurchaseOrderServiceImpl implements PurchaseOrderService {
+
+	@Autowired
+	private PurchaseOrderRepo purchaseOrderRepo;
+	
+	@Override
+	public PurchaseOrder savePO(PurchaseOrder purchaseOrder) {
+		new ModelMapper().map(purchaseOrder, PurchaseOrderEntity.class);
+		purchaseOrderRepo.save(poEO);
+		return po;
+		return null;
+	}
+
+}

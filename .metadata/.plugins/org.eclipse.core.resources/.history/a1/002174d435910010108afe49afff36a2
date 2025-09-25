@@ -1,0 +1,9 @@
+package com.service.kafka.service;
+
+import com.demo.kafka.model.PO;
+
+public interface PurchaseOrderService {
+	
+	public PurchaseOrder savePO(PurchaseOrder purchaseOrder);
+
+}

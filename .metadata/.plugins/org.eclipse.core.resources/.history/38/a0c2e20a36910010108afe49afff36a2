@@ -1,0 +1,20 @@
+package com.service.kafka.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.service.kafka.model.PurchaseOrder;
+import com.service.kafka.repo.PurchaseOrderRepo;
+import com.service.kafka.service.PurchaseOrderService;
+
+public class PurchaseOrderServiceImpl implements PurchaseOrderService {
+
+	@Autowired
+	private PurchaseOrderRepo purchaseOrderRepo;
+	
+	@Override
+	public PurchaseOrder savePO(PurchaseOrder purchaseOrder) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

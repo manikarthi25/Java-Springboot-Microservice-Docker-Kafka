@@ -1,0 +1,20 @@
+package com.service.kafka.model;
+
+public class MainClass {
+	
+	public static void main(String a[]) {
+		Test test = Test.getInstance();
+		test.address = "aa";
+		
+		System.out.println(test);
+		System.out.println(test.address);
+		
+		
+		Test test1 = Test.getInstance();
+test1.address = "bb";
+		
+		System.out.println(test1);
+		System.out.println(test1.address);
+	}
+
+}

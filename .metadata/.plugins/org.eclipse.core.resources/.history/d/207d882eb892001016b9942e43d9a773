@@ -1,0 +1,5 @@
+package com.service.kafka.model;
+
+public class Test {
+
+}

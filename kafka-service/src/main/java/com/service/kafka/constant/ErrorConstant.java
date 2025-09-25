@@ -1,0 +1,8 @@
+package com.service.kafka.constant;
+
+public class ErrorConstant {
+
+	public static final String APP_ERROR_01 = "APP-ERR-01";
+	public static final String APP_ERROR_02 = "APP-ERR-02";
+	public static final String APP_ERROR_03 = "APP-ERR-03";
+}
